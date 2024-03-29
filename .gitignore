@@ -1,0 +1,6 @@
+**/dist
+**/dist-desktop/
+**/node_modules/
+**/target/
+**/common/temp/
+**/package-lock.json

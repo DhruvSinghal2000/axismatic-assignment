@@ -1,0 +1,8 @@
+.card {
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between; 
+    .unselected-button {
+        background-color: gray;
+    }
+}
