@@ -1,8 +1,22 @@
 .card {
     display: flex; 
-    flex-direction: column; 
-    justify-content: space-between; 
+    flex-direction: column;
+    color: lightblue; 
+    border-style: solid;
+    border-color: #f0f0f5;
+    justify-content: center;
+    align-items: center;
     .unselected-button {
-        background-color: gray;
+        background-color: #F8FAFC;
+        border: 1px solid #F5F8FD;
+        > svg {
+            color: #AABAD6;
+        }
+    }
+    .product-container {
+        display: flex;
+        flex-direction: column; 
+        justify-content: space-between;
+        align-items: center;
     }
 }

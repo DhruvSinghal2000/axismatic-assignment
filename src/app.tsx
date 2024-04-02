@@ -1,12 +1,17 @@
 import * as React from 'react'; 
 import * as ReactDOM from 'react-dom/client'; 
+import { SiAdblockplus } from "react-icons/si";
+
+
 import { Card } from './card/card';
 
 export const App: React.FC = (): JSX.Element => {
     return (
-        <div>
-            <Card/>
-        </div>
+       
+            <Card 
+            product={{productLogo: <SiAdblockplus/>, productName: 'Dhruv'}} 
+            />
+       
     )
 }
 

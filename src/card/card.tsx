@@ -1,26 +1,30 @@
-import * as React from 'react'; 
-import * as style from './card.css'; 
+import * as React from 'react';
 import { IoAdd } from "react-icons/io5";
 
+import { IProductDetails } from '../types';
+import * as style from './card.css';
+
 export interface ICardProps {
-
+    product?: IProductDetails
 }
 
-enum CardMode {
-    Selected='Selected', 
-    UnSelected='Unselected'
-}
 
-export const Card: React.FC<React.PropsWithChildren<ICardProps>> = (): JSX.Element =>  {
-    const [currentCardMode, _setCurrentCardMode]  = React.useState<CardMode>(CardMode.UnSelected); 
+export const Card: React.FC<React.PropsWithChildren<ICardProps>> = ({product}: ICardProps): JSX.Element =>  {
+    
     return (
         <div className={style.card}> 
             {
-                currentCardMode === CardMode.UnSelected ? (
+                !product ? (
                     <button className={style.unselectedButton} >
                         <IoAdd/>
                     </button>
-                ) : (<div>Dhruv</div>)
+                ) : (
+                    <div className={style.productContainer}> 
+                        {product.productLogo}
+                        <span>{product.productName}</span>
+                    </div> 
+                    
+                )
             }
         </div>
     ); 

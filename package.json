@@ -7,7 +7,7 @@
     "start:prod": "webpack serve --open --mode production",
     "build:dev": "webpack  --mode development",
     "build:production": "webpack --mode production",
-    "generate:css": "tcm src -e"
+    "generate:css": "tcm src -e -w"
   },
   "private": "true",
   "devDependencies": {
