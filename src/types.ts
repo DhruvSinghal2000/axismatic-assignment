@@ -1,4 +1,5 @@
 export interface IProductDetails {
     productLogo: React.ReactNode, 
-    productName: string
+    productName: string,
+    isProductSelected: boolean;
 }

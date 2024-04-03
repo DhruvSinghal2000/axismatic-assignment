@@ -1,0 +1,11 @@
+.pill {
+    padding: 10px;
+    line-height: 16px; 
+    font-size: 12px;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 5px;
+    text-align: center;
+    color: #FFFFFF;
+    background-image: linear-gradient(to top right, #5C6DFF, #C564FF);
+}

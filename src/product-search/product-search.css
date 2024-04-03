@@ -1,16 +1,17 @@
 .dropdown {
-    position: relative;
-    width: 300px;
-  }
-  
-  .search-box input {
+  position: relative;
+  width: 300px;
+  .search-box {
+    outline: 0px;
     width: 100%;
     padding: 10px;
     margin: 5px 0;
     border: 1px solid #ddd;
     border-radius: 4px;
   }
-  
+  .no-search-text {
+    background-color: #EDF2F6;
+  }
   .dropdown-menu {
     position: absolute;
     width: 100%;
@@ -19,23 +20,21 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     z-index: 100;
+    display: flex; 
+    flex-direction: column; 
+    justify-content: space-between;
+    .dropdown-item {
+      padding: 10px;
+      cursor: pointer;
+      display: flex; 
+      align-items: center;
+      &:last-child {
+        border-bottom: none;
+      }
+      &:hover,
+      .product-name {
+        margin-left: 10px;
+      }
+    }
   }
-  
-  .dropdown-item {
-    padding: 10px;
-    border-bottom: 1px solid #eee;
-    cursor: pointer;
-  }
-  
-  .dropdown-item:last-child {
-    border-bottom: none;
-  }
-  
-  .dropdown-item:hover,
-  .dropdown-item.selected {
-    background-color: #f0f0f0;
-  }
-  
-  .icon {
-    margin-right: 10px;
-  }
+}
