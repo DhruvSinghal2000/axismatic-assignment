@@ -5,4 +5,5 @@ export const headerContainer: string;
 export const productActionContainer: string;
 export const products: string;
 export const searchText: string;
+export const selectedProductsContainer: string;
 

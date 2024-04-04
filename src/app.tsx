@@ -17,22 +17,28 @@ const allProducts: IProductDetails[] = [
 ]; 
 
 export const App: React.FC = (): JSX.Element => {
-    const [selectedProducts, setSelectedProducts] = React.useState<IProductDetails[]>([]); 
+    const [selectedProducts, setSelectedProducts] = React.useState<Set<IProductDetails>>(); 
     
     return (
        <div className={styles.axiamatic}> 
             <div className={styles.headerContainer}>
                 axiamatic
-                <a target='_blank' href='www.google.com' className={styles.exitSetup}>Exit Setup</a>
+                <a target='_self' href='https://www.google.com' className={styles.exitSetup}>Exit Setup</a>
             </div> 
             <div className={styles.products}>
-                <div>
-                    {
-                        selectedProducts.map((product: IProductDetails, idx: number) => {
-                            return (
-                                <div>{product.productName}</div>
-                            )
-                        })
+                <div className={styles.selectedProductsContainer}>
+                    { !!selectedProducts && ( <>                        <div style={{display: 'table-row'}}>
+                            {   <> <div style={{display: 'table-cell'}}> <Card product={allProducts[0]}/> </div>  
+                                <div style={{display: 'table-cell'}}> <Card/> </div>  </>
+                            }
+                        </div>
+                        <div style={{display: 'table-row'}}>
+                        {   <> <div style={{display: 'table-cell'}}> <Card product={allProducts[0]}/> </div>  
+                            <div style={{display: 'table-cell'}}> <Card/> </div>  </>
+                        }
+                        </div> </>
+                    )
+                        
                     }
                 </div>
                 <div className={styles.productActionContainer}> 
@@ -42,6 +48,7 @@ export const App: React.FC = (): JSX.Element => {
                     <ProductSearch 
                         products={allProducts}  
                         updateSelectedProducts={setSelectedProducts}
+                        selectedProducts={selectedProducts}
                     /> 
                 </div>
             </div>

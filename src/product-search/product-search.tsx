@@ -1,21 +1,21 @@
 import * as React from 'react'; 
 import { useCallback, useMemo, useState, useRef } from 'react'; 
 import classNames from 'classnames'
+import { GoCheck } from "react-icons/go";
 
 import * as styles from './product-search.css'; 
 import { IProductDetails } from '../types';
 
 export interface IProductSearchProps { 
   products: IProductDetails[]; 
-  updateSelectedProducts: React.Dispatch<React.SetStateAction<IProductDetails[]>>
+  updateSelectedProducts: React.Dispatch<React.SetStateAction<Set<IProductDetails>>>
+  selectedProducts: Set<IProductDetails>
 }
 
-export const ProductSearch: React.FC<IProductSearchProps> = ({products, updateSelectedProducts}: IProductSearchProps): JSX.Element => {
+export const ProductSearch: React.FC<IProductSearchProps> = ({products, selectedProducts, updateSelectedProducts}: IProductSearchProps): JSX.Element => {
   const [searchTerm, setSearchTerm] = useState<string>('');
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [selectedItem, setSelectedItem] = useState<IProductDetails>(null);
-  
-  
+    
   const filteredproducts = useMemo(() => products.filter(item =>
       item.productName.toLowerCase().includes(searchTerm.toLowerCase())
   ), [searchTerm]);
@@ -31,16 +31,23 @@ export const ProductSearch: React.FC<IProductSearchProps> = ({products, updateSe
 
   const onMenuItemClick = useCallback((selectedProduct: IProductDetails) => {
       return (_e: React.MouseEvent<HTMLDivElement>) => {
-        updateSelectedProducts((current: IProductDetails[]) => { 
-          if (!current.includes(selectedProduct)) 
-            current.push(selectedProduct) 
-          return [...current];  
-        }); 
+        let newSelectedProducts: Set<IProductDetails> =  new Set<IProductDetails>(selectedProducts);
+        if (selectedProducts?.has(selectedProduct)) {
+          newSelectedProducts.delete(selectedProduct); 
+        } else {
+          newSelectedProducts.add(selectedProduct);
+        }
+        updateSelectedProducts(newSelectedProducts);
       }
-  }, [updateSelectedProducts])
+  }, [selectedProducts, updateSelectedProducts])
+
+  const onBlur = useCallback((event: React.FocusEvent<HTMLInputElement>) => {
+    setIsOpen(!isOpen);
+  }, [isOpen, setIsOpen]);
+
 
   return (
-    <div className={styles.dropdown}>
+    <div  className={styles.productSelector}>
      
       <input
         type="text"
@@ -48,23 +55,27 @@ export const ProductSearch: React.FC<IProductSearchProps> = ({products, updateSe
         value={searchTerm}
         onChange={onSearchTextChange}
         onClick={onInputClick}
+        onBlur={onBlur}
         className={classNames(styles.searchBox, {[ styles.noSearchText]: !searchTerm})}
       />
       
       {isOpen && (
-        <div className={styles.dropdownMenu}>
+        <div  className={styles.dropdownMenu}>
           {filteredproducts.length > 0 ? (
-            filteredproducts.map((item, idx) => (
+            filteredproducts.map((item, idx) => {
+              const isSelectedProduct = selectedProducts?.has(item);
+              return (
               <div
                 key={idx}
-                className={`${styles.dropdownItem}`}
+                className={classNames(styles.dropdownItem, {[styles.selected]: isSelectedProduct })}
                 onClick={onMenuItemClick(item)}
+                id={`MenuItem_${item.productName}`}
               >
                 {item.productLogo}
-                <div className={styles.productName}>{item.productName}</div>
+                <div className={styles.productInfoContainer}>{item.productName}{ isSelectedProduct && <GoCheck/> }</div>
               </div>
-            ))
-          ) : (
+            )}))
+          : (
             <div className={styles.dropdownItem}>No results found</div>
           )}
         </div>
