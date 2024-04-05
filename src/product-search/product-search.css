@@ -1,18 +1,33 @@
 .product-selector {
-  .search-box {
-    width: 100%;
-    margin-top: 20px;
-    padding: 10px 0px 10px 10px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+  position: relative;
+  .search-wrapper {
+    ::placeholder {
+      color: #B3B3BB;
+    }
+    position: relative; 
+    > input:focus-visible {
+      outline-color:  #C5D1FD;
+    }
+    .search-box {
+      width: 100%;
+      margin-top: 20px;
+      padding: 10px 0px 10px 30px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    > svg {
+      position:absolute;
+      left: 10px;
+      top: 30px;
+      color: #B3B3BB;
+    }
+    .no-search-text {
+      background-color: #EDF2F6;
+    }
   }
-  > input:focus-visible {
-    outline-color:  #C5D1FD;
-  }
-  .no-search-text {
-    background-color: #EDF2F6;
-  }
+  
+  
   .dropdown-menu {
     margin-top: 20px;
     background-color: #fff;
@@ -23,7 +38,9 @@
     display: flex; 
     flex-direction: column; 
     padding: 10px; 
-    position: relative;
+    position: absolute;
+    box-sizing: border-box;
+    width: 100%;
     .dropdown-item {
       margin-top: 15px;
       cursor: pointer;

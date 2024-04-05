@@ -1,0 +1,81 @@
+.axiamatic {
+    font-weight: 600;   
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    .header-container {
+        flex-grow: 0.2;
+        font-size: 30px;
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-between;
+        .exit-setup {
+            color: #B8C5DC;
+            font-size: 16px;
+        }
+    }
+    .products { 
+        display: flex; 
+        flex-direction: row; 
+        justify-content: space-evenly;
+        align-items: center;
+        flex-grow: 0.5;
+        .selected-products-container {
+            height: 100%; 
+            width: 50%;
+            align-items: center;
+            display: flex; 
+            flex-direction: column;
+            justify-content: center;
+            .card-container {
+                margin-top: 20px;
+                display: flex; 
+                justify-content: center;
+                width: 60%;
+                flex-grow: 0.45;
+                .card-custom-class {
+                    margin-left: 20px;;
+                }
+            } 
+            .count {
+                color: #748398;
+                font-weight: 400;
+                margin-top: 20px;
+            }
+        }
+        .product-action-container {
+            display: flex; 
+            justify-content: space-between;
+            flex-direction: column; 
+            .search-text {
+                color: #858589;
+                font-weight: 400; 
+                font-size: 20px;
+                margin-top: 20px;
+            }
+            .next-button {
+                background-color: #4B6FFF;
+                color: white;
+                margin-top: 20px;
+                border: 0;
+                height: 32px;
+                border-radius: 4px;
+                &:disabled {
+                    background-color: #A6B7D4; 
+                }
+            }
+            .pill {
+                padding: 10px;
+                line-height: 16px; 
+                font-size: 12px;
+                width: fit-content;
+                height: fit-content;
+                border-radius: 5px;
+                text-align: center;
+                color: #FFFFFF;
+                background-image: linear-gradient(to top right, #5C6DFF, #C564FF);
+                margin-bottom: 20px;
+            }
+        }
+    }
+}

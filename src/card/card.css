@@ -1,24 +1,51 @@
 .card {
+    width: 100%;
     display: flex; 
-    flex-direction: column;
-    color: lightblue; 
-    border-radius: 4px;
+    flex-direction: column; 
+    border-radius: 10px;
     border-style: solid;
     border-color: #f0f0f5;
     justify-content: center;
     align-items: center;
     .unselected-button {
         background-color: #F8FAFC;
-        border: 1px solid #F5F8FD;
-        border-radius: 4px;
+        border: 1px solid #F0F6FB;
+        border-radius: 10px;
+        height: 30%;
+        width: 30%;
+        display: flex;
         > svg {
             color: #AABAD6;
+            margin: auto; 
+            position: relative;
+            font-size: 30px;
         }
     }
-    .product-container {
-        display: flex;
-        flex-direction: column; 
+    .product-info-and-remove {
+        display: flex; 
+        flex-direction: column;
         justify-content: space-between;
         align-items: center;
+        flex-grow: 0.5;
+        .product-info {
+            display: flex;
+            flex-direction: column; 
+            justify-content: space-between;
+            align-items: center;
+            > svg {
+                font-size: 30px;
+                margin-bottom: 10px;
+            }
+        }
+        .remove {
+            color: #AABAD6;
+            font-size: 12px;
+            padding: 0px 4px;
+            > svg {
+                font-size: 8px;
+                margin-right: 2px;
+                color: #F16064;
+            }
+        }
     }
 }

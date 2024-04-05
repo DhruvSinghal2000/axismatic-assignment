@@ -10,7 +10,7 @@ const config = {
           template: './src/index.html'
         })
       ],
-      entry: './src/app.tsx',
+      entry: './src/product-selector.tsx',
       module: {
         rules: [
           {
@@ -44,5 +44,12 @@ const config = {
 module.exports = (_env, argv) => {
   if (argv.mode  === 'development')
     config.devtool = 'eval-source-map'; 
+  else if (argv.mode === 'production') {
+    config.performance =  {
+      hints: false,
+      maxEntrypointSize: 512000,
+      maxAssetSize: 512000
+    }
+  }
   return config; 
 };
