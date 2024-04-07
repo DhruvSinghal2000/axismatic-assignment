@@ -41,6 +41,7 @@
             color: #AABAD6;
             font-size: 12px;
             padding: 0px 4px;
+            cursor: pointer;
             > svg {
                 font-size: 8px;
                 margin-right: 2px;
